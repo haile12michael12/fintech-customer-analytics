@@ -1,35 +1,82 @@
-## Task 2: Sentiment and Thematic Analysis
+# 📊 Banking App Review Sentiment Analysis (CBE, BOA, Dashen)
 
-### Methodology
+This project analyzes customer satisfaction with mobile banking applications in Ethiopia by collecting and processing user reviews from the Google Play Store. It simulates the role of a Data Analyst at **Omega Consultancy**, providing insights and recommendations to improve digital banking experiences for:
 
-1. **Sentiment Analysis**:
-   - Primary analysis using DistilBERT model (`distilbert-base-uncased-finetuned-sst-2-english`)
-   - Secondary analysis with TextBlob and VADER for comparison
-   - Computed sentiment scores (positive/negative/neutral) and confidence levels
-   - Aggregated results by bank and star rating
+- 🇪🇹 Commercial Bank of Ethiopia (CBE)
+- 🇪🇹 Bank of Abyssinia (BOA)
+- 🇪🇹 Dashen Bank
 
-2. **Thematic Analysis**:
-   - Text preprocessing with spaCy (lemmatization, stop word removal)
-   - Keyword extraction using TF-IDF to identify significant terms and n-grams
-   - Manual theme clustering based on common banking app concerns:
-     - Account Access Issues
-     - Transaction Problems
-     - User Interface & Experience
-     - Customer Support
-     - Feature Requests
-   - Each review assigned to relevant themes based on keyword matching
+---
 
-### Files
+## 🗂️ Repository Structure
 
-- `sentiment_analysis.py`: Script for sentiment analysis using multiple approaches
-- `thematic_analysis.py`: Script for keyword extraction and theme identification
-- `bank_reviews_with_sentiment.csv`: Reviews with sentiment scores
-- `bank_reviews_with_sentiment_and_themes.csv`: Complete analysis results
-- `aggregated_sentiment_by_bank_and_rating.csv`: Summary statistics
+- banking-review-analysis/
+- ├── data/ # Raw and cleaned review CSVs
+- ├── notebooks/ # Jupyter notebooks for each task
+- ├── scripts/ # Python scripts for scraping, analysis, DB
+- ├── db/ # SQL schema and inserts
+- ├── plots/ # Visualizations
+- ├── reports/ # Markdown report with findings
+- ├── requirements.txt # Project dependencies
+- ├── README.md # Project documentation
 
-### Results
 
-Example findings:
-- Chase: Most complaints about login issues (Account Access)
-- Bank of America: Frequent mentions of slow transfers (Transaction Issues)
-- Wells Fargo: Many comments about app crashes (User Interface)
+## 🚀 Project Tasks
+
+### ✅ Task 1: Data Collection & Preprocessing
+- Scraped 1,200+ user reviews using `google-play-scraper`.
+- Cleaned the data (duplicates, missing values, normalized dates).
+- Stored as structured CSV with: `review`, `rating`, `date`, `bank`, `source`.
+
+### ✅ Task 2: Sentiment & Thematic Analysis
+- Applied **DistilBERT** and **VADER** to score sentiments (positive/negative/neutral).
+- Extracted keywords using **spaCy** and **TF-IDF**.
+- Clustered keywords into 3–5 themes per bank (e.g., 'Login Issues', 'Transaction Delays').
+
+### ✅ Task 3: Oracle DB Integration
+- Designed relational schema: `Banks`, `Reviews`.
+- Inserted cleaned data (>1,000 rows) into Oracle XE using Python + `cx_Oracle`.
+
+### ✅ Task 4: Insights & Recommendations
+- Visualized trends (bar plots, word clouds).
+- Identified pain points (e.g., login failure, app crashes) and satisfaction drivers (e.g., easy navigation).
+- Proposed 2+ actionable improvements per bank.
+
+
+
+## 📊 Example Visualizations
+
+- 📈 Sentiment Distribution by Bank
+- ☁️ Word Clouds (Positive & Negative)
+- 📉 Ratings vs. Sentiment Trends
+- 🧠 Thematic Clusters per Bank
+
+
+## 🛠️ Technologies Used
+
+- Python (Pandas, Seaborn, Matplotlib, spaCy, Scikit-learn)
+- NLP Models: `distilbert-base-uncased-finetuned-sst-2-english`, VADER
+- Oracle XE (via `cx_Oracle`)
+- Google Play Scraper (Python)
+- GitHub (version control, PRs, branches per task)
+
+
+## 📚 How to Run
+
+1. Clone this repo:
+   
+    git clone https://github.com/haile12michael12/fintech-customer-analyst.git
+    cd banking-review-analysis
+   
+
+2. Install dependencies:
+  
+    pip install -r requirements.txt
+   
+
+3. Run scripts:
+    - Scraping: `python scripts/scraping/scrape_reviews.py`
+    - Preprocessing: `python scripts/preprocessing/clean_reviews.py`
+    - Sentiment/Theme Analysis: `python scripts/analysis/sentiment.py`
+    - DB Insert: `python scripts/database/insert_to_oracle.py`
+

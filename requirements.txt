@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 google-play-scraper==1.2.2
 pandas==2.0.3
 numpy==1.24.3
 python-dateutil==2.8.2
+=======
+google-play-scraper
+python-dateutil
+textblob
+vaderSentiment
+python-dotenv
+transformers
+torch
+pandas
+scikit-learn
+spacy
+matplotlib
+seaborn
+nltk
+>>>>>>> task-2
